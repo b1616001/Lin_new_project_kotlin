@@ -94,21 +94,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:padding="10dp">
-
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@color/colorPrimaryDark"-->
-<!--                    android:gravity="center"-->
-<!--                    android:id="@+id/tv_delete"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:text="刪除圖片"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="18dp" />-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/tv_Camera_delete"
+                    android:padding="10dp"
+                    android:text="刪除相機圖片"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:id="@+id/tv_delete"
+                    android:padding="10dp"
+                    android:text="刪除圖片"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
 
 

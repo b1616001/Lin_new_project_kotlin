@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.safeargs)
-//    alias(libs.plugins.kapt)
+    alias(libs.plugins.ksp)
 //    kotlin("kapt") // 啟用 kapt 插件
 
 
@@ -78,13 +78,14 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
 
-    implementation ("androidx.room:room-runtime:2.4.3")
-    annotationProcessor ("androidx.room:room-compiler:2.4.3")
-    implementation ("androidx.room:room-rxjava2:2.4.3")
-    implementation ("androidx.room:room-rxjava3:2.4.3")
-    implementation ("androidx.room:room-guava:2.4.3")
-    testImplementation ("androidx.room:room-testing:2.4.3")
-//    ksp ("androidx.room:room-compiler:2.4.3")
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-rxjava2:$roomVersion")
+    implementation("androidx.room:room-rxjava3:$roomVersion")
+    implementation("androidx.room:room-guava:$roomVersion")
+    testImplementation("androidx.room:room-testing:$roomVersion")
 
 
     implementation("com.tencent:mmkv:1.2.14")

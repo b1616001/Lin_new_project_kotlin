@@ -58,7 +58,8 @@ public class PublicSpaceFragment extends BaseBindingFragment<FragmentPublicspace
         getBinding().tvReadTxt.setOnClickListener(view -> onReadTxt());
         getBinding().tvVideo.setOnClickListener(view -> onVideo());
         getBinding().tvAudio.setOnClickListener(view -> onAudio());
-
+        getBinding().tvDelete.setOnClickListener(view -> onDelete(bitmap_uri));
+        getBinding().tvCameraDelete.setOnClickListener(view -> onDelete(uri));
     }
 
     public void onCamera() {
@@ -84,18 +85,24 @@ public class PublicSpaceFragment extends BaseBindingFragment<FragmentPublicspace
         }
     }//
 
-//    public void onDelete() {
-//        if (bitmap_uri != null) {
-//            String path = AndroidQStorageSaveUtils.Uri_to_path(getContext(), bitmap_uri);
+    public void onDelete(Uri uu) {
+        if (uu != null) {
+            String path = AndroidQStorageSaveUtils.Uri_to_path(getContext(), uu);
+
+            if (AndroidQStorageSaveUtils.moveToTrash(getContext(),uu,true)){
+                ToastMethod.showToast(getContext(), "刪除成功");
+            }else {
+                ToastMethod.showToast(getContext(), "刪除失敗");
+            }
 //            if (AndroidQStorageSaveUtils.deleteFoder(new File(path))) {
 //                ToastMethod.showToast(getContext(), "刪除成功");
 //                bitmap_uri=null;
 //
 //            }
-//        } else {
-//            ToastMethod.showToast(getContext(), "無圖片");
-//        }//
-//    }
+        } else {
+            ToastMethod.showToast(getContext(), "無圖片");
+        }//
+    }
 
     public void onText() {
         try {

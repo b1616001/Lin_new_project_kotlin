@@ -12,7 +12,8 @@ import com.example.lin_new_project_kotlin.room.entity.UserProfileEntity
 
 @Database(
     entities = [UserProfileEntity::class, FavoritesEntity::class, HistoryEntity::class],
-    version = 1
+    version = 1 ,
+    exportSchema = false
 )
 @TypeConverters(
     Converters::class

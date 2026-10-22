@@ -634,6 +634,7 @@ object AndroidQStorageSaveUtils {
             return FileMethod.getFile_uri(context, filename)
         }
     } //    public static File UriToFile(Context context,Uri uri ) {
+
     //        try {
     //            InputStream inputStream = context.getContentResolver().openInputStream(uri);//InputStream只能被讀取一次
     //            inputStream
@@ -643,5 +644,20 @@ object AndroidQStorageSaveUtils {
     //
     //
     //    }
+    @JvmStatic
+    fun moveToTrash(context: Context, targetUri: Uri, trash: Boolean = true): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            throw UnsupportedOperationException("IS_TRASHED 僅支援 Android 11 (API 30) 以上")
+        }
+
+        // ★ 使用 ContentValues 賦值 IS_TRASHED
+        val values = ContentValues().apply {
+            put(MediaStore.MediaColumns.IS_TRASHED, if (trash) 1 else 0) // 1 為移入垃圾桶，0 為還原
+        }
+
+        // 透過 update() 執行
+        val updatedRows = context.contentResolver.update(targetUri, values, null, null)
+        return updatedRows > 0
+    }
 }
 
